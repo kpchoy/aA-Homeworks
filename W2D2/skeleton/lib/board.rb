@@ -21,15 +21,22 @@ class Board
   end
 
   def valid_move?(start_pos)
-    unless (1..14).include?(start_pos)
+    unless (0...14).include?(start_pos)
       raise "Invalid starting cup"
     end
-    if self.cups[start_pos].nil?
+    if self.cups[start_pos].empty?
       raise "Starting cup is empty"
     end
   end
 
   def make_move(start_pos, current_player_name)
+    stones = self.cups[start_pos]
+    self.cups[start_pos] = []
+    stones.each_with_index do |stone, idx|
+      next if (idx + 1 + start_pos) > 13
+      self.cups[idx+start_pos+1] << stone
+    end
+    p self.cups[13]
   end
 
   def next_turn(ending_cup_idx)
