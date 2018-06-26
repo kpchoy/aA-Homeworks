@@ -56,7 +56,7 @@ class Map
   end
 
   def set(k,v)
-    pair_index = @arr.index { |pair| pair[0] == key}
+    pair_index = @arr.index { |pair| pair[0] == k}
     if pair_index
       @arr[pair_index][1] = value
     else
