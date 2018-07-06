@@ -1,6 +1,6 @@
 class CreateHouseTable < ActiveRecord::Migration[5.2]
   def change
-    create_table :house_tables do |t|
+    create_table :houses do |t|
       t.string :address
 
       t.timestamps
